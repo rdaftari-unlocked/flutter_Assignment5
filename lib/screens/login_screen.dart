@@ -1,101 +1,137 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/home_page.dart';
 
 class LoginScreen extends StatelessWidget {
+  final userName  = TextEditingController();
+  final password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login Page"),
-      ),
+
       body: Container(
+        color: Colors.deepOrange,
         child: Column(
           children: <Widget>[
             SizedBox(
-              width: 200.0,
-              height: 100.0,
+              height: 150.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.all(10),
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/dq.png'),
-                          fit: BoxFit.cover
-                      ),
-                    ),
+            Card(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(color: Colors.white70, width: 1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 10,
+              margin: EdgeInsets.all(20),
+              child: Container(
+                  child: Column(
+                children: [
+                  SizedBox(
+                    height: 20.0,
                   ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text("Please Login to Continue",
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(20),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Username',
-                        border: OutlineInputBorder(),
-                        suffixIcon: Icon(
-                          Icons.person,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.all(10),
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/dq.png'),
+                              fit: BoxFit.cover),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(20),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(),
-                        suffixIcon: Icon(
-                          Icons.lock,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          "Please Login to Continue",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(20),
+                          child: TextFormField(
+                            controller: userName,
+                            decoration: InputDecoration(
+                              labelText: 'Username',
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.person,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ),
-              ],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(20),
+                          child: TextFormField(
+                            controller: password,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 200,
+                        height: 50,
+                        margin: EdgeInsets.only(top: 30),
+                        child: GestureDetector(
+                          child: Container(
+                              alignment: Alignment.center,
+                              color: Colors.deepOrange,
+                              child: Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )),
+                          onTap: () {
+                            String usernameInput = userName.text;
+                            String passwordInput = password.text;
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (BuildContext context) => HomePage())
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 120.0,
+                      ),
+                    ],
+                  ),
+                ],
+              )),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 200,
-                  height: 50,
-                  margin: EdgeInsets.only(top: 30),
-                  child: OutlineButton(
-                    child: Text("Login"),
-                    onPressed: () {
 
-                    },
-                    hoverColor: Colors.deepOrange,
-                    color: Colors.blueAccent,
-                  ),
-                )
-              ],
-            ),
           ],
         ),
       ),
