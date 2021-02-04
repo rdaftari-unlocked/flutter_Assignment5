@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final mainLister = DUMMY_CATEGORIES.map((e) => UserListItem(e.name,e.imgUrl)).toList();
+   int totalMembers = DUMMY_CATEGORIES.length;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(top:30,bottom: 20),
               child: Text("The Mobile Team" , style: TextStyle(color: Colors.deepOrange,fontWeight: FontWeight.bold,fontSize: 20),),
             ),
+            Text("Total Members $totalMembers"),
             ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.all(8),
@@ -41,8 +43,8 @@ class _HomePageState extends State<HomePage> {
                   child: UserListItem(e.name,e.imgUrl),
                 onTap: (){
                     Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => ProfileScreen()
-                    ));
+                      builder: (context) => ProfileScreen(name: e.name,email: e.email,imgUrl: e.imgUrl,phoneNumber: e.phoneNumber)
+                    ) );
                 },
               )
               ).toList(),

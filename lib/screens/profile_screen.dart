@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
+  final String name;
+  final String imgUrl;
+  final String email;
+  final String phoneNumber;
+
+  ProfileScreen({this.name, this.imgUrl, this.email, this.phoneNumber});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +30,13 @@ class ProfileScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/dq.png'),
+                            image: NetworkImage(imgUrl),
                             fit: BoxFit.cover),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Text("Rohit Daftari",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 28),),
+                      child: Text(name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 28),),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                          // Icon(Icons.phone),
                         Padding(
                           padding: const EdgeInsets.only(top:8.0),
-                          child: Text("rohitdaftari3@gmail.com",style: TextStyle(fontSize: 15)),
+                          child: Text(email,style: TextStyle(fontSize: 15)),
                         ),
                       ],
                     ),
@@ -69,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Icon(Icons.phone),
                     ),
                   ),
-                  Text("8793212991",style: TextStyle(fontSize: 20)),
+                  Text(phoneNumber,style: TextStyle(fontSize: 20)),
                 ],
               ),
             )
