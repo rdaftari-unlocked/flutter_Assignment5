@@ -11,3 +11,13 @@ LoginProfile
     - 2.Profile screen 
         - Show user image at top (Follow udemy to show image)
         - Email below the profile image see image below 
+
+## Solution - 
+
+<div>
+<img src="./ss1.png" width="100">
+   
+<img src="./ss2.png" width="100">
+
+<img src="./ss3.png" width="100">
+</div>   
