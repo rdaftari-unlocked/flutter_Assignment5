@@ -10,9 +10,11 @@ LoginProfile
     - 1.List
     - 2.Profile screen 
         - Show user image at top (Follow udemy to show image)
-        - Email below the profile image see image below 
+        - Email below the profile image see image below
 
 ## Solution - 
+
+- username = admin , password = admin
 
 <div>
 <img src="./ss1.png" width="100">
