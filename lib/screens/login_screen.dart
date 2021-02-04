@@ -117,9 +117,33 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             String usernameInput = userName.text;
                             String passwordInput = password.text;
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) => HomePage())
-                            );
+                            if (usernameInput == "admin" && passwordInput == "admin"){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (BuildContext context) => HomePage())
+                              );
+                            }else{
+                              showDialog<void>(
+                                context: context,
+                                barrierDismissible: true,
+                                // false = user must tap button, true = tap outside dialog
+                                builder: (BuildContext dialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Error'),
+                                    content: Text('Entered Username or Password is Incorrect . Please Enter correct Username and Password'),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('OK'),
+                                        onPressed: () {
+                                          Navigator.of(dialogContext)
+                                              .pop(); // Dismiss alert dialog
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+
                           },
                         ),
                       ),
